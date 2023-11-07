@@ -17,7 +17,7 @@
 # the LICENSE file in the top-level directory of this distribution
 # and at http://www.gnu.org/licenses/.
 #
-add_subdirectory(handover_server) // added by Milad
+add_subdirectory(handover_server) # added by Milad
 add_subdirectory(common)
 add_subdirectory(phy)
 add_subdirectory(stack)
@@ -39,7 +39,7 @@ endif (RPATH)
 
 add_library(enb_cfg_parser STATIC parser.cc enb_cfg_parser.cc)
 target_link_libraries(enb_cfg_parser srsran_common ${LIBCONFIGPP_LIBRARIES})
-target_link_libraries(srsenb handover_server) \\added by Milad
+target_link_libraries(srsenb handover_server) #added by Milad
 
 add_executable(srsenb main.cc enb.cc metrics_stdout.cc metrics_csv.cc metrics_json.cc)
 
