@@ -39,10 +39,10 @@ endif (RPATH)
 
 add_library(enb_cfg_parser STATIC parser.cc enb_cfg_parser.cc)
 target_link_libraries(enb_cfg_parser srsran_common ${LIBCONFIGPP_LIBRARIES})
-target_link_libraries(srsenb handover_server) #added by Milad
+
 
 add_executable(srsenb main.cc enb.cc metrics_stdout.cc metrics_csv.cc metrics_json.cc)
-
+target_link_libraries(srsenb handover_server) #added by Milad
 set(SRSENB_SOURCES srsenb_phy srsenb_stack srsenb_common srsenb_s1ap srsenb_upper srsenb_mac srsenb_rrc srslog system)
 if(ENABLE_RIC_AGENT)
 set(SRSENB_SOURCES ${SRSENB_SOURCES} srsenb_ric)
