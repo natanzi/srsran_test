@@ -1,7 +1,7 @@
 /**
  * Copyright 2013-2021 Software Radio Systems Limited
  *
- * This file is part of srsRAN. this file edited by MILAD to enable socket over srsran
+ * This file is part of srsRAN.
  *
  * srsRAN is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -18,7 +18,7 @@
  * and at http://www.gnu.org/licenses/.
  *
  */
-#include "srsenb/src/handover_server/handover_server.h"
+
 #include <poll.h>
 #include <pthread.h>
 #include <signal.h>
@@ -673,17 +673,7 @@ int main(int argc, char* argv[])
     enb->stop();
     return SRSRAN_ERROR;
   }
-  
-  // Start the HandoverServer by Milad
-  int handover_port = 54321; // Replace with your desired port
-  HandoverServer handoverServer(handover_port);
-  if (handoverServer.start() != SRSRAN_SUCCESS) {
-    std::cerr << "Failed to start the Handover Server on port " << handover_port << std::endl;
-    return SRSRAN_ERROR; // If the server fails to start, exit the srsran application
-  }
-  std::cout << "Handover Server started on port " << handover_port << std::endl;
-  
-  
+
   // Set metrics
   metricshub.init(enb.get(), args.general.metrics_period_secs);
   metricshub.add_listener(&metrics_screen);
@@ -734,10 +724,6 @@ int main(int argc, char* argv[])
   metricshub.stop();
   enb->stop();
   cout << "---  exiting  ---" << endl;
-  
-  // Clean-up code by MILAD
-  std::cout << "Stopping Handover Server..." << std::endl;
-  handoverServer.stop(); // Stop the HandoverServer by Milad
 
   return SRSRAN_SUCCESS;
 }
